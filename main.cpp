@@ -106,7 +106,15 @@ int main(int argc, const char** argv)
 	key_map[0b011'111'011] = KEY_OEM_1; // _## ### _##
 	key_map[0b011'111'101] = KEY_OEM_1; // _## ### #_#
 	key_map[0b011'111'111] = KEY_OEM_1; // _## ### ###
-	key_map[0b111] = KEY_OEM_1; // Special indicator for shift; we may still walk here when pressing ### ###.
+
+	// Sequences that can only be reached with shift
+	key_map[0b111'100] = KEY_OEM_1; // ### ### #__
+	key_map[0b111'010] = KEY_OEM_1; // ### ### _#_
+	key_map[0b111'001] = KEY_OEM_1; // ### ### __#
+	key_map[0b111'110] = KEY_OEM_1; // ### ### ##_
+	key_map[0b111'011] = KEY_OEM_1; // ### ### _##
+	key_map[0b111'101] = KEY_OEM_1; // ### ### #_#
+	key_map[0b111'111] = KEY_CAPS_LOCK; // ### ### ###
 
 	// Also consider that the following sequences could be given special meanings:
 	// - Shift + Space     (### #_# #_#)
@@ -156,6 +164,10 @@ int main(int argc, const char** argv)
 					std::cout << "Full input:    " << sequenceToString(shift, sequence);
 					SOUP_IF_LIKELY (key != KEY_OEM_1)
 					{
+						SOUP_IF_UNLIKELY (key == KEY_CAPS_LOCK)
+						{
+							shift = false;
+						}
 						os::simulateKeyPress(false, shift, false, key);
 					}
 					else

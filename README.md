@@ -112,3 +112,7 @@ If you start by pressing `###`, it's the same as the previous sequences, but wit
 - `###` `_##` `#_#` `###` -> `_`
 - `###` `_##` `###` `#__` -> `+`
 - `###` `_##` `###` `_#_` -> `<`
+
+Additionally, there are some special sequences:
+
+- `###` `###` `###` -> Caps Lock
