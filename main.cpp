@@ -50,46 +50,46 @@ int main(int argc, const char** argv)
 	{
 		key = KEY_NONE;
 	}
-	key_map[0b100'100] = KEY_A;      // #__ #__
-	key_map[0b100'010] = KEY_B;      // #__ _#_
-	key_map[0b100'001] = KEY_C;      // #__ __#
-	key_map[0b100'110] = KEY_D;      // #__ ##_
-	key_map[0b100'011] = KEY_E;      // #__ _##
-	key_map[0b100'101] = KEY_F;      // #__ #_#
-	key_map[0b100'111] = KEY_G;      // #__ ###
-	key_map[0b010'100] = KEY_H;      // _#_ #__
-	key_map[0b010'010] = KEY_I;      // _#_ _#_
-	key_map[0b010'001] = KEY_J;      // _#_ __#
-	key_map[0b010'110] = KEY_K;      // _#_ ##_
-	key_map[0b010'011] = KEY_L;      // _#_ _##
-	key_map[0b010'101] = KEY_M;      // _#_ #_#
-	key_map[0b010'111] = KEY_N;      // _#_ ###
-	key_map[0b001'100] = KEY_O;      // __# #__
-	key_map[0b001'010] = KEY_P;      // __# _#_
-	key_map[0b001'001] = KEY_Q;      // __# __#
-	key_map[0b001'110] = KEY_R;      // __# ##_
-	key_map[0b001'011] = KEY_S;      // __# _##
-	key_map[0b001'101] = KEY_T;      // __# #_#
-	key_map[0b001'111] = KEY_U;      // __# ###
-	key_map[0b101'100] = KEY_V;      // #_# #__
-	key_map[0b101'010] = KEY_W;      // #_# _#_
-	key_map[0b101'001] = KEY_X;      // #_# __#
-	key_map[0b101'110] = KEY_Y;      // #_# ##_
-	key_map[0b101'011] = KEY_Z;      // #_# _##
-	key_map[0b101'101] = KEY_SPACE;  // #_# #_#
-	key_map[0b101'111] = KEY_PERIOD; // #_# ###
-	key_map[0b110'100] = KEY_1;      // ##_ #__
-	key_map[0b110'010] = KEY_2;      // ##_ _#_
-	key_map[0b110'001] = KEY_3;      // ##_ __#
-	key_map[0b110'110] = KEY_4;      // ##_ ##_
-	key_map[0b110'011] = KEY_5;      // ##_ _##
-	key_map[0b110'101] = KEY_6;      // ##_ #_#
-	key_map[0b110'111] = KEY_7;      // ##_ ###
-	key_map[0b011'100] = KEY_8;      // _## #__
-	key_map[0b011'010] = KEY_9;      // _## _#_
-	key_map[0b011'001] = KEY_0;      // _## __#
-	key_map[0b011'110] = KEY_COMMA;  // _## ##_
-	key_map[0b011'011] = KEY_ENTER;  // _## _##
+	key_map[0b100'100] = KEY_A;         // #__ #__
+	key_map[0b100'010] = KEY_B;         // #__ _#_
+	key_map[0b100'001] = KEY_C;         // #__ __#
+	key_map[0b100'110] = KEY_D;         // #__ ##_
+	key_map[0b100'011] = KEY_E;         // #__ _##
+	key_map[0b100'101] = KEY_F;         // #__ #_#
+	key_map[0b100'111] = KEY_G;         // #__ ###
+	key_map[0b010'100] = KEY_H;         // _#_ #__
+	key_map[0b010'010] = KEY_I;         // _#_ _#_
+	key_map[0b010'001] = KEY_J;         // _#_ __#
+	key_map[0b010'110] = KEY_K;         // _#_ ##_
+	key_map[0b010'011] = KEY_L;         // _#_ _##
+	key_map[0b010'101] = KEY_M;         // _#_ #_#
+	key_map[0b010'111] = KEY_N;         // _#_ ###
+	key_map[0b001'100] = KEY_O;         // __# #__
+	key_map[0b001'010] = KEY_P;         // __# _#_
+	key_map[0b001'001] = KEY_Q;         // __# __#
+	key_map[0b001'110] = KEY_R;         // __# ##_
+	key_map[0b001'011] = KEY_S;         // __# _##
+	key_map[0b001'101] = KEY_T;         // __# #_#
+	key_map[0b001'111] = KEY_U;         // __# ###
+	key_map[0b101'100] = KEY_V;         // #_# #__
+	key_map[0b101'010] = KEY_W;         // #_# _#_
+	key_map[0b101'001] = KEY_X;         // #_# __#
+	key_map[0b101'110] = KEY_Y;         // #_# ##_
+	key_map[0b101'011] = KEY_Z;         // #_# _##
+	key_map[0b101'101] = KEY_SPACE;     // #_# #_#
+	key_map[0b101'111] = KEY_PERIOD;    // #_# ###
+	key_map[0b110'100] = KEY_1;         // ##_ #__
+	key_map[0b110'010] = KEY_2;         // ##_ _#_
+	key_map[0b110'001] = KEY_3;         // ##_ __#
+	key_map[0b110'110] = KEY_4;         // ##_ ##_
+	key_map[0b110'011] = KEY_5;         // ##_ _##
+	key_map[0b110'101] = KEY_6;         // ##_ #_#
+	key_map[0b110'111] = KEY_7;         // ##_ ###
+	key_map[0b011'100] = KEY_8;         // _## #__
+	key_map[0b011'010] = KEY_9;         // _## _#_
+	key_map[0b011'001] = KEY_0;         // _## __#
+	key_map[0b011'110] = KEY_BACKSPACE; // _## ##_
+	key_map[0b011'011] = KEY_ENTER;     // _## _##
 	key_map[0b011'101'100] = KEY_BRACKET_LEFT; // _## #_# #__
 	key_map[0b011'101'010] = KEY_BACKSLASH;    // _## #_# _#_
 	key_map[0b011'101'001] = KEY_BRACKET_RIGHT; // _## #_# __#
@@ -98,9 +98,9 @@ int main(int argc, const char** argv)
 	key_map[0b011'101'101] = KEY_QUOTE;        // _## #_# #_#
 	key_map[0b011'101'111] = KEY_MINUS;        // _## #_# ###
 	key_map[0b011'111'100] = KEY_EQUALS;       // _## ### #__
+	key_map[0b011'111'010] = KEY_COMMA;        // _## ### _#_
 
 	// Dead end/unused sequences
-	key_map[0b011'111'010] = KEY_OEM_1; // _## ### _#_
 	key_map[0b011'111'001] = KEY_OEM_1; // _## ### __#
 	key_map[0b011'111'110] = KEY_OEM_1; // _## ### ##_
 	key_map[0b011'111'011] = KEY_OEM_1; // _## ### _##
@@ -108,9 +108,10 @@ int main(int argc, const char** argv)
 	key_map[0b011'111'111] = KEY_OEM_1; // _## ### ###
 	key_map[0b111] = KEY_OEM_1; // Special indicator for shift; we may still walk here when pressing ### ###.
 
-	// Also consider that the following sequences could be given special meaning:
-	// - Shift + Space (### #_# #_#)
-	// - Shift + Enter (### _## _##)
+	// Also consider that the following sequences could be given special meanings:
+	// - Shift + Space     (### #_# #_#)
+	// - Shift + Backspace (### _## ##_)
+	// - Shift + Enter     (### _## _##)
 
 	DigitalKeyboard kbd;
 	bool shift = false;

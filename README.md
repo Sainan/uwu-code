@@ -52,7 +52,7 @@ These keys will be interpreted as follows:
 - `_##` `#__` -> `8`
 - `_##` `_#_` -> `9`
 - `_##` `__#` -> `0`
-- `_##` `##_` -> `,`
+- `_##` `##_` -> Backspace
 - `_##` `_##` -> Enter
 - `_##` `#_#` `#__` -> `[`
 - `_##` `#_#` `_#_` -> `\`
@@ -62,6 +62,7 @@ These keys will be interpreted as follows:
 - `_##` `#_#` `#_#` -> `'`
 - `_##` `#_#` `###` -> `-`
 - `_##` `###` `#__` -> `=`
+- `_##` `###` `_#_` -> `,`
 
 If you start by pressing `###`, it's the same as the previous sequences, but with the addition of the shift modifier:
 
@@ -102,7 +103,6 @@ If you start by pressing `###`, it's the same as the previous sequences, but wit
 - `###` `_##` `#__` -> `*`
 - `###` `_##` `_#_` -> `(`
 - `###` `_##` `__#` -> `)`
-- `###` `_##` `##_` -> `<`
 - `###` `_##` `#_#` `#__` -> `{`
 - `###` `_##` `#_#` `_#_` -> `?`
 - `###` `_##` `#_#` `__#` -> `}`
@@ -111,3 +111,4 @@ If you start by pressing `###`, it's the same as the previous sequences, but wit
 - `###` `_##` `#_#` `#_#` -> `"`
 - `###` `_##` `#_#` `###` -> `_`
 - `###` `_##` `###` `#__` -> `+`
+- `###` `_##` `###` `_#_` -> `<`
