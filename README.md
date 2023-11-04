@@ -2,6 +2,9 @@
 
 Allows you to input text on a keyboard with only 3 keys, such as the Wooting UwU.
 
+- [Downloads](https://github.com/Sainan/uwu-code/releases)
+- [Watch it in action](https://www.youtube.com/watch?v=9aKUcVTyI0k)
+
 ## Keyboard Setup
 
 The device must be configured such that it produces F13, F14, and F15 inputs.
