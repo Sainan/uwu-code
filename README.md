@@ -72,6 +72,13 @@ These keys will be interpreted as follows:
 - `###` -> Shift
 - `###` `###` `#__` -> Ctrl
 
+### Navigation Keys
+
+- `_##` `###` `###` `#__` -> Arrow Left
+- `_##` `###` `###` `__#` -> Arrow Right
+- `_##` `###` `###` `##_` -> Arrow Up
+- `_##` `###` `###` `_##` -> Arrow Down
+
 #### Example Shift Sequences
 
 - `###` `#__` `#__` -> `A`
@@ -123,18 +130,13 @@ These keys will be interpreted as follows:
 
 #### Example Ctrl Sequences
 
-- `###` `###` `#__` `#__` `#__` -> Ctrl+A
-- `###` `###` `#__` `#__` `__#` -> Ctrl+C
-- `###` `###` `#__` `#_#` `#__` -> Ctrl+V
-- `###` `###` `#__` `#_#` `##_` -> Ctrl+Y
-- `###` `###` `#__` `#_#` `_##` -> Ctrl+Z
-
-### Navigation Keys
-
-- `_##` `###` `###` `#__` -> Arrow Left
-- `_##` `###` `###` `__#` -> Arrow Right
-- `_##` `###` `###` `##_` -> Arrow Up
-- `_##` `###` `###` `_##` -> Arrow Down
+- `###` `###` `#__` `#__` `#__` -> Ctrl + A
+- `###` `###` `#__` `#__` `__#` -> Ctrl + C
+- `###` `###` `#__` `#_#` `#__` -> Ctrl + V
+- `###` `###` `#__` `#_#` `##_` -> Ctrl + Y
+- `###` `###` `#__` `#_#` `_##` -> Ctrl + Z
+- `###` `###` `#__` `_##` `###` `###` `#__` -> Ctrl + Arrow Left
+- `###` `###` `#__` `_##` `###` `###` `__#` -> Ctrl + Arrow Right
 
 ### Lock Keys
 
