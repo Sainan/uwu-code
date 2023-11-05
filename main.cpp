@@ -82,7 +82,7 @@ int main(int argc, const char** argv)
 	key_map[0b011'111'111] = KEY_OEM_1; // _## ### ###
 
 	// Sequences that can only be reached with shift
-	key_map[0b111'100] = KEY_OEM_1; // ### ### #__
+	key_map[0b111'100] = KEY_LCTRL; // ### ### #__
 	key_map[0b111'010] = KEY_OEM_1; // ### ### _#_
 	key_map[0b111'001] = KEY_OEM_1; // ### ### __#
 	key_map[0b111'110] = KEY_OEM_1; // ### ### ##_
@@ -97,6 +97,7 @@ int main(int argc, const char** argv)
 
 	DigitalKeyboard kbd;
 	bool shift = false;
+	bool ctrl = false;
 	uint8_t current = 0;
 	uint16_t sequence = 0;
 	time_t deadline = 0;
@@ -117,7 +118,7 @@ int main(int argc, const char** argv)
 			{
 				std::cout << valueToString(current) << " ";
 
-				if (sequence == 0 && !shift // First key in sequence?
+				if (sequence == 0 && !shift && !ctrl // First key in sequence?
 					&& current == 0b111
 					)
 				{
@@ -137,19 +138,30 @@ int main(int argc, const char** argv)
 				}
 				if (auto key = key_map[sequence]; key != KEY_NONE) // End of sequence?
 				{
-					SOUP_IF_LIKELY (key != KEY_OEM_1)
+					if (key == KEY_LCTRL)
 					{
-						SOUP_IF_UNLIKELY (key == KEY_CAPS_LOCK)
-						{
-							shift = false;
-						}
-						os::simulateKeyPress(false, shift, false, key);
+						shift = false;
+						ctrl = true;
+						sequence = 0;
+						key = KEY_NONE;
+						deadline = time::millis() + 1000;
 					}
 					else
 					{
-						std::cout << "[Dead end]";
+						SOUP_IF_LIKELY (key != KEY_OEM_1)
+						{
+							SOUP_IF_UNLIKELY (key == KEY_CAPS_LOCK)
+							{
+								shift = false;
+							}
+							os::simulateKeyPress(ctrl, shift, false, key);
+						}
+						else
+						{
+							std::cout << "[Dead end]";
+						}
+						goto _reset_sequence_data;
 					}
-					goto _reset_sequence_data;
 				}
 				else
 				{
@@ -164,6 +176,7 @@ int main(int argc, const char** argv)
 				_reset_sequence_data:
 					std::cout << "\n";
 					shift = false;
+					ctrl = false;
 					sequence = 0;
 					deadline = 0;
 				}

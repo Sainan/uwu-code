@@ -67,7 +67,12 @@ These keys will be interpreted as follows:
 - `_##` `###` `#__` -> `=`
 - `_##` `###` `_#_` -> `,`
 
-If you start by pressing `###`, it's the same as the previous sequences, but with the addition of the shift modifier:
+### Modifier Keys
+
+- `###` -> Shift
+- `###` `###` `#__` -> Ctrl
+
+#### Example Shift Sequences
 
 - `###` `#__` `#__` -> `A`
 - `###` `#__` `_#_` -> `B`
@@ -116,6 +121,14 @@ If you start by pressing `###`, it's the same as the previous sequences, but wit
 - `###` `_##` `###` `#__` -> `+`
 - `###` `_##` `###` `_#_` -> `<`
 
-Additionally, there are some special sequences:
+#### Example Ctrl Sequences
+
+- `###` `###` `#__` `#__` `#__` -> Ctrl+A
+- `###` `###` `#__` `#__` `__#` -> Ctrl+C
+- `###` `###` `#__` `#_#` `#__` -> Ctrl+V
+- `###` `###` `#__` `#_#` `##_` -> Ctrl+Y
+- `###` `###` `#__` `#_#` `_##` -> Ctrl+Z
+
+### Lock Keys
 
 - `###` `###` `###` -> Caps Lock
