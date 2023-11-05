@@ -17,32 +17,6 @@ using namespace soup;
 	return str;
 }
 
-[[nodiscard]] static std::string sequenceToString(bool shift, uint16_t seq)
-{
-	uint8_t values[3];
-	values[0] = (seq >> 6) & 0b111;
-	values[1] = (seq >> 3) & 0b111;
-	values[2] = (seq >> 0) & 0b111;
-
-	std::string str;
-	if (shift)
-	{
-		str = "###";
-	}
-	for (const auto& value : values)
-	{
-		if (value != 0)
-		{
-			if (!str.empty())
-			{
-				str.push_back(' ');
-			}
-			str.append(valueToString(value));
-		}
-	}
-	return str;
-}
-
 int main(int argc, const char** argv)
 {
 	Key key_map[0b111'111'111 + 1];
@@ -141,6 +115,8 @@ int main(int argc, const char** argv)
 		{
 			if (current != 0) // Any key was pressed?
 			{
+				std::cout << valueToString(current) << " ";
+
 				if (sequence == 0 && !shift // First key in sequence?
 					&& current == 0b111
 					)
@@ -156,12 +132,11 @@ int main(int argc, const char** argv)
 
 				SOUP_IF_UNLIKELY (sequence >= COUNT(key_map))
 				{
-					std::cout << "ERROR: " << sequenceToString(shift, sequence) << " is a dead end that was not mapped!\n";
+					std::cout << "[ERROR: Dead end that was not mapped]";
 					goto _reset_sequence_data;
 				}
 				if (auto key = key_map[sequence]; key != KEY_NONE) // End of sequence?
 				{
-					std::cout << "Full input:    " << sequenceToString(shift, sequence);
 					SOUP_IF_LIKELY (key != KEY_OEM_1)
 					{
 						SOUP_IF_UNLIKELY (key == KEY_CAPS_LOCK)
@@ -172,14 +147,12 @@ int main(int argc, const char** argv)
 					}
 					else
 					{
-						std::cout << " - Dead end";
+						std::cout << "[Dead end]";
 					}
-					std::cout << "\n";
 					goto _reset_sequence_data;
 				}
 				else
 				{
-					std::cout << "Partial input: " << sequenceToString(shift, sequence) << "\n";
 					last_press = time::millis();
 				}
 			}
@@ -187,8 +160,9 @@ int main(int argc, const char** argv)
 			{
 				if (time::millisSince(last_press) > 500)
 				{
-					std::cout << "Idle for too long; forgetting about partial input.\n";
+					std::cout << "[Timeout]";
 				_reset_sequence_data:
+					std::cout << "\n";
 					shift = false;
 					sequence = 0;
 					last_press = 0;
