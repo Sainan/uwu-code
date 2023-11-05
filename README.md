@@ -129,6 +129,13 @@ These keys will be interpreted as follows:
 - `###` `###` `#__` `#_#` `##_` -> Ctrl+Y
 - `###` `###` `#__` `#_#` `_##` -> Ctrl+Z
 
+### Navigation Keys
+
+- `_##` `###` `###` `#__` -> Arrow Left
+- `_##` `###` `###` `__#` -> Arrow Right
+- `_##` `###` `###` `##_` -> Arrow Up
+- `_##` `###` `###` `_##` -> Arrow Down
+
 ### Lock Keys
 
 - `###` `###` `###` -> Caps Lock

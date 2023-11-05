@@ -71,12 +71,19 @@ using namespace soup;
 	case 0b011'111'100: return KEY_EQUALS;        // _## ### #__
 	case 0b011'111'010: return KEY_COMMA;         // _## ### _#_
 
+	case 0b011'111'111'100: return KEY_ARROW_LEFT;  // _## ### ### #__
+	case 0b011'111'111'001: return KEY_ARROW_RIGHT; // _## ### ### __#
+	case 0b011'111'111'110: return KEY_ARROW_UP;    // _## ### ### ##_
+	case 0b011'111'111'011: return KEY_ARROW_DOWN;  // _## ### ### _##
+
 	// Dead end/unused sequences
 	case 0b011'111'001: return KEY_OEM_1; // _## ### __#
 	case 0b011'111'110: return KEY_OEM_1; // _## ### ##_
 	case 0b011'111'011: return KEY_OEM_1; // _## ### _##
 	case 0b011'111'101: return KEY_OEM_1; // _## ### #_#
-	case 0b011'111'111: return KEY_OEM_1; // _## ### ###
+	case 0b011'111'111'010: return KEY_OEM_1; // _## ### ### _#_
+	case 0b011'111'111'101: return KEY_OEM_1; // _## ### ### #_#
+	case 0b011'111'111'111: return KEY_OEM_1; // _## ### ### ###
 
 	// Sequences that can only be reached with shift
 	case 0b111'100: return KEY_LCTRL; // ### ### #__
