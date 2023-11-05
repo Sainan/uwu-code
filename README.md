@@ -80,7 +80,11 @@ These keys will be interpreted as follows:
 - `_##` `###` `###` `##_` -> Arrow Up
 - `_##` `###` `###` `_##` -> Arrow Down
 
-#### Example Shift Sequences
+### Lock Keys
+
+- `###` `###` `###` -> Caps Lock
+
+## Example Sequences With Modifier Keys
 
 - `###` `#__` `#__` -> `A`
 - `###` `#__` `_#_` -> `B`
@@ -128,9 +132,6 @@ These keys will be interpreted as follows:
 - `###` `_##` `#_#` `###` -> `_`
 - `###` `_##` `###` `#__` -> `+`
 - `###` `_##` `###` `_#_` -> `<`
-
-#### Example Ctrl Sequences
-
 - `###` `###` `#__` `#__` `#__` -> Ctrl + A
 - `###` `###` `#__` `#__` `__#` -> Ctrl + C
 - `###` `###` `#__` `#_#` `#__` -> Ctrl + V
@@ -138,7 +139,3 @@ These keys will be interpreted as follows:
 - `###` `###` `#__` `#_#` `_##` -> Ctrl + Z
 - `###` `###` `#__` `_##` `###` `###` `#__` -> Ctrl + Arrow Left
 - `###` `###` `#__` `_##` `###` `###` `__#` -> Ctrl + Arrow Right
-
-### Lock Keys
-
-- `###` `###` `###` -> Caps Lock
