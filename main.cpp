@@ -153,6 +153,7 @@ int main(int argc, const char** argv)
 								shift = false;
 							}
 							os::simulateKeyPress(ctrl, shift, false, key);
+							std::cout << "[Done]";
 						}
 						else
 						{
