@@ -2,7 +2,6 @@
 #include <thread>
 
 #include <DigitalKeyboard.hpp>
-#include <macros.hpp>
 #include <os.hpp>
 #include <time.hpp>
 
