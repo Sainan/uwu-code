@@ -66,6 +66,7 @@ These keys will be interpreted as follows:
 - `_##` `#_#` `###` -> `-`
 - `_##` `###` `#__` -> `=`
 - `_##` `###` `_#_` -> `,`
+- `_##` `###` `_##` -> Tab
 
 ### Modifier Keys
 
