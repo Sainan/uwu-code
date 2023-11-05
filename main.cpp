@@ -99,7 +99,7 @@ int main(int argc, const char** argv)
 	bool shift = false;
 	uint8_t current = 0;
 	uint16_t sequence = 0;
-	time_t last_press = 0;
+	time_t deadline = 0;
 	while (true)
 	{
 		kbd.update();
@@ -153,19 +153,19 @@ int main(int argc, const char** argv)
 				}
 				else
 				{
-					last_press = time::millis();
+					deadline = time::millis() + 500;
 				}
 			}
-			else if (last_press != 0) // Waiting for further input?
+			else if (deadline != 0) // Waiting for further input?
 			{
-				if (time::millisSince(last_press) > 500)
+				if (time::millis() > deadline)
 				{
 					std::cout << "[Timeout]";
 				_reset_sequence_data:
 					std::cout << "\n";
 					shift = false;
 					sequence = 0;
-					last_press = 0;
+					deadline = 0;
 				}
 			}
 		}
