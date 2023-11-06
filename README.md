@@ -83,6 +83,8 @@ These keys will be interpreted as follows:
 - `_##` `###` `###` `__#` -> Arrow Right
 - `_##` `###` `###` `##_` -> Arrow Up
 - `_##` `###` `###` `_##` -> Arrow Down
+- `_##` `###` `###` `_#_` -> Home/Pos1
+- `_##` `###` `###` `#_#` -> End
 
 ### Lock Keys
 
