@@ -74,6 +74,8 @@ These keys will be interpreted as follows:
 - `###` -> Shift
 - `###` `###` `#__` -> Ctrl
 - `###` `###` `#__` `###` -> Ctrl + Shift
+- `###` `###` `_#_` -> Meta/Windows Key
+- `###` `###` `__#` -> Alt
 
 ### Navigation Keys
 

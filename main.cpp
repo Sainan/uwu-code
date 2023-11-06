@@ -86,8 +86,8 @@ using namespace soup;
 
 	// Sequences that can only be reached with shift
 	case 0b111'100: return KEY_LCTRL; // ### ### #__
-	case 0b111'010: return KEY_OEM_1; // ### ### _#_
-	case 0b111'001: return KEY_OEM_1; // ### ### __#
+	case 0b111'010: return KEY_LMETA; // ### ### _#_
+	case 0b111'001: return KEY_LALT;  // ### ### __#
 	case 0b111'110: return KEY_OEM_1; // ### ### ##_
 	case 0b111'011: return KEY_OEM_1; // ### ### _##
 	case 0b111'101: return KEY_OEM_1; // ### ### #_#
@@ -101,6 +101,8 @@ int main(int argc, const char** argv)
 	DigitalKeyboard kbd;
 	bool shift = false;
 	bool ctrl = false;
+	bool meta = false;
+	bool alt = false;
 	uint8_t current = 0;
 	uint16_t sequence = 0;
 	time_t deadline = 0;
@@ -136,11 +138,22 @@ int main(int argc, const char** argv)
 				{
 					if (key == KEY_LCTRL)
 					{
-						shift = false;
 						ctrl = true;
+					_enabled_modifier_key:
+						shift = false;
 						sequence = 0;
 						key = KEY_NONE;
 						deadline = time::millis() + 1000;
+					}
+					else if (key == KEY_LMETA)
+					{
+						meta = true;
+						goto _enabled_modifier_key;
+					}
+					else if (key == KEY_LALT)
+					{
+						alt = true;
+						goto _enabled_modifier_key;
 					}
 					else
 					{
@@ -150,7 +163,7 @@ int main(int argc, const char** argv)
 							{
 								shift = false;
 							}
-							os::simulateKeyPress(ctrl, shift, false, key);
+							os::simulateKeyPress(meta, ctrl, shift, alt, key);
 							std::cout << "[Done]";
 						}
 						else
@@ -169,11 +182,17 @@ int main(int argc, const char** argv)
 			{
 				if (time::millis() > deadline)
 				{
+					if (meta)
+					{
+						os::simulateKeyPress(KEY_LMETA);
+					}
 					std::cout << "[Timeout]";
 				_reset_sequence_data:
 					std::cout << "\n";
 					shift = false;
 					ctrl = false;
+					meta = false;
+					alt = false;
 					sequence = 0;
 					deadline = 0;
 				}
