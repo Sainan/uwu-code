@@ -121,9 +121,7 @@ int main(int argc, const char** argv)
 			{
 				std::cout << valueToString(current) << " ";
 
-				if (sequence == 0 && !shift && !ctrl // First key in sequence?
-					&& current == 0b111
-					)
+				if (sequence == 0 && !shift && current == 0b111)
 				{
 					shift = true;
 				}

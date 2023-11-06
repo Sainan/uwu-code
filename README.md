@@ -73,6 +73,7 @@ These keys will be interpreted as follows:
 
 - `###` -> Shift
 - `###` `###` `#__` -> Ctrl
+- `###` `###` `#__` `###` -> Ctrl + Shift
 
 ### Navigation Keys
 
@@ -141,3 +142,4 @@ These keys will be interpreted as follows:
 - `###` `###` `#__` `_##` `##_` -> Ctrl + Backspace
 - `###` `###` `#__` `_##` `###` `###` `#__` -> Ctrl + Arrow Left
 - `###` `###` `#__` `_##` `###` `###` `__#` -> Ctrl + Arrow Right
+- `###` `###` `#__` `###` `_##` `###` `##_` -> Ctrl + Shift + Escape
