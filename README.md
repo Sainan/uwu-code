@@ -85,6 +85,7 @@ These keys will be interpreted as follows:
 - `_##` `###` `###` `_##` -> Arrow Down
 - `_##` `###` `###` `_#_` -> Home/Pos1
 - `_##` `###` `###` `#_#` -> End
+- `_##` `###` `#_#` `#__` -> Delete
 - `_##` `###` `#_#` `##_` -> Page Up
 - `_##` `###` `#_#` `_##` -> Page Down
 
