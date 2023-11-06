@@ -69,6 +69,7 @@ using namespace soup;
 	case 0b011'101'111: return KEY_MINUS;         // _## #_# ###
 	case 0b011'111'100: return KEY_EQUALS;        // _## ### #__
 	case 0b011'111'010: return KEY_COMMA;         // _## ### _#_
+	case 0b011'111'110: return KEY_ESCAPE;        // _## ### ##_
 	case 0b011'111'011: return KEY_TAB;           // _## ### _##
 
 	case 0b011'111'111'100: return KEY_ARROW_LEFT;  // _## ### ### #__
@@ -78,7 +79,6 @@ using namespace soup;
 
 	// Dead end/unused sequences
 	case 0b011'111'001: return KEY_OEM_1; // _## ### __#
-	case 0b011'111'110: return KEY_OEM_1; // _## ### ##_
 	case 0b011'111'101: return KEY_OEM_1; // _## ### #_#
 	case 0b011'111'111'010: return KEY_OEM_1; // _## ### ### _#_
 	case 0b011'111'111'101: return KEY_OEM_1; // _## ### ### #_#
