@@ -2,6 +2,8 @@
 #include <thread>
 
 #include <DigitalKeyboard.hpp>
+#include <kbRgb.hpp>
+#include <kbRgbWooting.hpp>
 #include <os.hpp>
 #include <time.hpp>
 
@@ -133,6 +135,25 @@ int main(int argc, const char** argv)
 	uint8_t current = 0;
 	uint16_t sequence = 0;
 	time_t deadline = 0;
+
+	UniquePtr<kbRgb> rgb;
+	bool rgb_shift = false;
+	bool rgb_ctrl = false;
+	bool rgb_meta = false;
+	bool rgb_alt = false;
+	uint8_t rgb_current = 0;
+	uint16_t rgb_sequence = 0;
+	for (auto& r : kbRgb::getAll(false))
+	{
+		if (r->isWooting()
+			&& r->asWooting()->isUwu()
+			)
+		{
+			rgb = std::move(r);
+			break;
+		}
+	}
+
 	while (true)
 	{
 		kbd.update();
@@ -222,6 +243,66 @@ int main(int argc, const char** argv)
 					alt = false;
 					sequence = 0;
 					deadline = 0;
+				}
+			}
+		}
+
+		if (rgb)
+		{
+			if (rgb_ctrl != ctrl
+				|| rgb_shift != shift
+				|| rgb_alt != alt
+				|| rgb_meta != meta
+				|| rgb_current != current
+				|| rgb_sequence != sequence
+				)
+			{
+				rgb_ctrl = ctrl;
+				rgb_shift = shift;
+				rgb_alt = alt;
+				rgb_meta = meta;
+				rgb_current = current;
+				rgb_sequence = sequence;
+
+				if (current || sequence || ctrl || shift || alt || meta)
+				{
+					uint8_t display_value = (current ? current : (sequence & 0b111));
+					Rgb keys[NUM_KEYS]{};
+					if (display_value & 0b100)
+					{
+						keys[kbRgbWooting::UWULED_KEY_1] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_LEFT_1] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_LEFT_2] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_LEFT_3] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_TOP_1] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_BOTTOM_1] = Rgb::MAGENTA;
+					}
+					if (display_value & 0b010)
+					{
+						keys[kbRgbWooting::UWULED_KEY_2] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_TOP_2] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_TOP_3] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_BOTTOM_2] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_BOTTOM_3] = Rgb::MAGENTA;
+					}
+					if (display_value & 0b001)
+					{
+						keys[kbRgbWooting::UWULED_KEY_3] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_RIGHT_1] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_RIGHT_2] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_RIGHT_3] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_TOP_4] = Rgb::MAGENTA;
+						keys[kbRgbWooting::UWULED_BOTTOM_4] = Rgb::MAGENTA;
+					}
+					if (ctrl) { keys[kbRgbWooting::UWULED_TOP_1] = Rgb::RED; }
+					if (shift) { keys[kbRgbWooting::UWULED_TOP_2] = Rgb::YELLOW; }
+					if (alt) { keys[kbRgbWooting::UWULED_TOP_3] = Rgb::GREEN; }
+					if (meta) { keys[kbRgbWooting::UWULED_TOP_4] = Rgb::BLUE; }
+					rgb->setKeys(keys);
+				}
+				else
+				{
+					rgb->deinit();
 				}
 			}
 		}
