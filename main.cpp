@@ -190,7 +190,7 @@ int main(int argc, const char** argv)
 							{
 								shift = false;
 							}
-							os::simulateKeyPress(meta, ctrl, shift, alt, key);
+							os::simulateKeyPress(ctrl, shift, alt, meta, key);
 							std::cout << "[Done]";
 						}
 						else
