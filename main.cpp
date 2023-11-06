@@ -83,13 +83,33 @@ using namespace soup;
 	case 0b011'111'101'110: return KEY_PAGE_UP;     // _## ### #_# ##_
 	case 0b011'111'101'011: return KEY_PAGE_DOWN;   // _## ### #_# _##
 
+	// F keys
+	case 0b011'111'001'100'100: return KEY_F1;  // _## ### __# #__ #__
+	case 0b011'111'001'100'010: return KEY_F2;  // _## ### __# #__ _#_
+	case 0b011'111'001'100'001: return KEY_F3;  // _## ### __# #__ __#
+	case 0b011'111'001'100'110: return KEY_F4;  // _## ### __# #__ ##_
+	case 0b011'111'001'100'011: return KEY_F5;  // _## ### __# #__ _##
+	case 0b011'111'001'100'101: return KEY_F6;  // _## ### __# #__ #_#
+	case 0b011'111'001'100'111: return KEY_F7;  // _## ### __# #__ ###
+	case 0b011'111'001'001'100: return KEY_F8;  // _## ### __# __# #__
+	case 0b011'111'001'001'010: return KEY_F9;  // _## ### __# __# _#_
+	case 0b011'111'001'001'001: return KEY_F10; // _## ### __# __# __#
+	case 0b011'111'001'001'110: return KEY_F11; // _## ### __# __# ##_
+	case 0b011'111'001'001'011: return KEY_F12; // _## ### __# __# _##
+
 	// Dead end/unused sequences
-	case 0b011'111'001: return KEY_OEM_1;     // _## ### __#
-	case 0b011'111'111'111: return KEY_OEM_1; // _## ### ### ###
-	case 0b011'111'101'010: return KEY_OEM_1; // _## ### #_# _#_
-	case 0b011'111'101'001: return KEY_OEM_1; // _## ### #_# __#
-	case 0b011'111'101'101: return KEY_OEM_1; // _## ### #_# #_#
-	case 0b011'111'101'111: return KEY_OEM_1; // _## ### #_# ###
+	case 0b011'111'001'010: return KEY_OEM_1;     // _## ### __# _#_
+	case 0b011'111'001'110: return KEY_OEM_1;     // _## ### __# ##_
+	case 0b011'111'001'011: return KEY_OEM_1;     // _## ### __# _##
+	case 0b011'111'001'101: return KEY_OEM_1;     // _## ### __# #_#
+	case 0b011'111'001'111: return KEY_OEM_1;     // _## ### __# ###
+	case 0b011'111'111'111: return KEY_OEM_1;     // _## ### ### ###
+	case 0b011'111'101'010: return KEY_OEM_1;     // _## ### #_# _#_
+	case 0b011'111'101'001: return KEY_OEM_1;     // _## ### #_# __#
+	case 0b011'111'101'101: return KEY_OEM_1;     // _## ### #_# #_#
+	case 0b011'111'101'111: return KEY_OEM_1;     // _## ### #_# ###
+	case 0b011'111'001'001'101: return KEY_OEM_1; // _## ### __# __# #_#
+	case 0b011'111'001'001'111: return KEY_OEM_1; // _## ### __# __# ###
 
 	// Sequences that can only be reached with shift
 	case 0b111'100: return KEY_LCTRL; // ### ### #__
