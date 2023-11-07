@@ -114,13 +114,19 @@ using namespace soup;
 	case 0b011'111'001'001'111: return KEY_OEM_1; // _## ### __# __# ###
 
 	// Sequences that can only be reached with shift
-	case 0b111'100: return KEY_LCTRL; // ### ### #__
-	case 0b111'010: return KEY_LMETA; // ### ### _#_
-	case 0b111'001: return KEY_LALT;  // ### ### __#
-	case 0b111'110: return KEY_OEM_1; // ### ### ##_
-	case 0b111'011: return KEY_OEM_1; // ### ### _##
-	case 0b111'101: return KEY_OEM_1; // ### ### #_#
+	case 0b111'100: return KEY_LCTRL;     // ### ### #__
+	case 0b111'010: return KEY_LMETA;     // ### ### _#_
+	case 0b111'001: return KEY_LALT;      // ### ### __#
+	case 0b111'110: return KEY_OEM_1;     // ### ### ##_
+	case 0b111'011: return KEY_OEM_1;     // ### ### _##
 	case 0b111'111: return KEY_CAPS_LOCK; // ### ### ###
+	case 0b111'101'100: return KEY_OEM_1; // ### ### #_# #__
+	case 0b111'101'010: return KEY_OEM_1; // ### ### #_# _#_
+	case 0b111'101'001: return KEY_OEM_1; // ### ### #_# __#
+	case 0b111'101'110: return KEY_OEM_2; // ### ### #_# ##_
+	case 0b111'101'011: return KEY_OEM_3; // ### ### #_# _##
+	case 0b111'101'101: return KEY_OEM_1; // ### ### #_# #_#
+	case 0b111'101'111: return KEY_OEM_1; // ### ### #_# ###
 	}
 	return KEY_NONE;
 }
@@ -154,6 +160,9 @@ int main(int argc, const char** argv)
 		}
 	}
 
+	bool write_values = false;
+	bool write_mapped = true;
+
 	while (true)
 	{
 		kbd.update();
@@ -170,6 +179,14 @@ int main(int argc, const char** argv)
 			if (current != 0) // Any key was pressed?
 			{
 				std::cout << valueToString(current) << " ";
+
+				if (write_values)
+				{
+					os::simulateKeyPress(false, true, false, (current & 0b100) ? KEY_3 : KEY_MINUS);
+					os::simulateKeyPress(false, true, false, (current & 0b010) ? KEY_3 : KEY_MINUS);
+					os::simulateKeyPress(false, true, false, (current & 0b001) ? KEY_3 : KEY_MINUS);
+					os::simulateKeyPress(KEY_SPACE);
+				}
 
 				if (sequence == 0 && !shift && current == 0b111)
 				{
@@ -203,6 +220,18 @@ int main(int argc, const char** argv)
 						alt = true;
 						goto _enabled_modifier_key;
 					}
+					else if (key == KEY_OEM_2)
+					{
+						write_values = !write_values;
+						std::cout << "[" << (write_values ? "Enabled" : "Disabled") << " writing values]";
+						goto _reset_sequence_data;
+					}
+					else if (key == KEY_OEM_3)
+					{
+						write_mapped = !write_mapped;
+						std::cout << "[" << (write_mapped ? "Enabled" : "Disabled") << " writing mapped]";
+						goto _reset_sequence_data;
+					}
 					else
 					{
 						SOUP_IF_LIKELY (key != KEY_OEM_1)
@@ -211,7 +240,19 @@ int main(int argc, const char** argv)
 							{
 								shift = false;
 							}
-							os::simulateKeyPress(ctrl, shift, alt, meta, key);
+							if (write_mapped)
+							{
+								if (write_values)
+								{
+									os::simulateKeyPress(false, false, false, KEY_QUOTE);
+								}
+								os::simulateKeyPress(ctrl, shift, alt, meta, key);
+								if (write_values)
+								{
+									os::simulateKeyPress(false, false, false, KEY_QUOTE);
+									os::simulateKeyPress(KEY_SPACE);
+								}
+							}
 							std::cout << "[Done]";
 						}
 						else

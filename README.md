@@ -108,6 +108,11 @@ These keys will be interpreted as follows:
 
 - `###` `###` `###` -> Caps Lock
 
+### Settings
+
+- `###` `###` `#_#` `##_` -> Toggle Value Writing (Off by default)
+- `###` `###` `#_#` `_##` -> Toggle Mapped Writing (On by default)
+
 ## Example Sequences With Modifier Keys
 
 - `###` `#__` `#__` -> `A`
